@@ -27,7 +27,7 @@ func (state notSessionTime) FixMsgIn(session *session, msg *Message) (nextState 
 	return state
 }
 
-func (state notSessionTime) Timeout(*session, internal.Event) (nextState sessionState) {
+func (state notSessionTime) Timeout(*session, interna.Event) (nextState sessionState) {
 	return state
 }
 

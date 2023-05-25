@@ -59,9 +59,9 @@ func (s logonState) FixMsgIn(session *session, msg *Message) (nextState sessionS
 	return inSession{}
 }
 
-func (s logonState) Timeout(session *session, e internal.Event) (nextState sessionState) {
+func (s logonState) Timeout(session *session, e interna.Event) (nextState sessionState) {
 	switch e {
-	case internal.LogonTimeout:
+	case interna.LogonTimeout:
 		session.log.OnEvent("Timed out waiting for logon response")
 		return latentState{}
 	}

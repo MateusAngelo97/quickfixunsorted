@@ -51,14 +51,14 @@ func (s *resendStateTestSuite) TestIsSessionTime() {
 
 func (s *resendStateTestSuite) TestTimeoutPeerTimeout() {
 	s.MockApp.On("ToAdmin")
-	s.session.Timeout(s.session, internal.PeerTimeout)
+	s.session.Timeout(s.session, interna.PeerTimeout)
 
 	s.MockApp.AssertExpectations(s.T())
 	s.State(pendingTimeout{resendState{}})
 }
 
 func (s *resendStateTestSuite) TestTimeoutUnchangedIgnoreLogonLogoutTimeout() {
-	tests := []internal.Event{internal.LogonTimeout, internal.LogoutTimeout}
+	tests := []interna.Event{interna.LogonTimeout, interna.LogoutTimeout}
 
 	for _, event := range tests {
 		s.session.Timeout(s.session, event)
@@ -68,7 +68,7 @@ func (s *resendStateTestSuite) TestTimeoutUnchangedIgnoreLogonLogoutTimeout() {
 
 func (s *resendStateTestSuite) TestTimeoutUnchangedNeedHeartbeat() {
 	s.MockApp.On("ToAdmin")
-	s.session.Timeout(s.session, internal.NeedHeartbeat)
+	s.session.Timeout(s.session, interna.NeedHeartbeat)
 
 	s.MockApp.AssertExpectations(s.T())
 	s.State(resendState{})

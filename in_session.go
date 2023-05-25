@@ -17,7 +17,7 @@ package quickfixunsorted
 
 import (
 	"bytes"
-	"github.com/MateusAngelo97/quickfixunsorted/internal"
+	"github.com/MateusAngelo97/quickfixunsorted/interna"
 	"time"
 )
 
@@ -62,15 +62,15 @@ func (state inSession) FixMsgIn(session *session, msg *Message) sessionState {
 	return state
 }
 
-func (state inSession) Timeout(session *session, event internal.Event) (nextState sessionState) {
+func (state inSession) Timeout(session *session, event interna.Event) (nextState sessionState) {
 	switch event {
-	case internal.NeedHeartbeat:
+	case interna.NeedHeartbeat:
 		heartBt := NewMessage()
 		heartBt.Header.SetField(tagMsgType, FIXString("0"))
 		if err := session.send(heartBt); err != nil {
 			return handleStateError(session, err)
 		}
-	case internal.PeerTimeout:
+	case interna.PeerTimeout:
 		testReq := NewMessage()
 		testReq.Header.SetField(tagMsgType, FIXString("1"))
 		testReq.Body.SetField(tagTestReqID, FIXString("TEST"))

@@ -1,4 +1,4 @@
-package internal
+package interna
 
 // Event is an abstraction for session events.
 type Event int

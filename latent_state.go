@@ -28,7 +28,7 @@ func (state latentState) FixMsgIn(session *session, msg *Message) (nextState ses
 	return state
 }
 
-func (state latentState) Timeout(*session, internal.Event) (nextState sessionState) {
+func (state latentState) Timeout(*session, interna.Event) (nextState sessionState) {
 	return state
 }
 

@@ -42,20 +42,20 @@ type session struct {
 	// Mutex for access to toSend.
 	sendMutex sync.Mutex
 
-	sessionEvent chan internal.Event
+	sessionEvent chan interna.Event
 	messageEvent chan bool
 	application  Application
 	Validator
 	stateMachine
-	stateTimer *internal.EventTimer
-	peerTimer  *internal.EventTimer
+	stateTimer *interna.EventTimer
+	peerTimer  *interna.EventTimer
 	sentReset  bool
 	stopOnce   sync.Once
 
 	targetDefaultApplVerID string
 
 	admin chan interface{}
-	internal.SessionSettings
+	interna.SessionSettings
 	transportDataDictionary *datadictionary.DataDictionary
 	appDataDictionary       *datadictionary.DataDictionary
 
@@ -496,7 +496,7 @@ func (s *session) initiateLogoutInReplyTo(reason string, inReplyTo *Message) (er
 		return
 	}
 	s.log.OnEvent("Inititated logout request")
-	time.AfterFunc(s.LogoutTimeout, func() { s.sessionEvent <- internal.LogoutTimeout })
+	time.AfterFunc(s.LogoutTimeout, func() { s.sessionEvent <- interna.LogoutTimeout })
 	return
 }
 
@@ -765,17 +765,17 @@ func (s *session) onAdmin(msg interface{}) {
 func (s *session) run() {
 	s.Start(s)
 	var stopChan = make(chan struct{})
-	s.stateTimer = internal.NewEventTimer(func() {
+	s.stateTimer = interna.NewEventTimer(func() {
 		select {
 		// Deadlock in write to chan s.sessionEvent after s.Stopped()==true and end of loop session.go:766 because no reader of chan s.sessionEvent.
-		case s.sessionEvent <- internal.NeedHeartbeat:
+		case s.sessionEvent <- interna.NeedHeartbeat:
 		case <-stopChan:
 		}
 	})
-	s.peerTimer = internal.NewEventTimer(func() {
+	s.peerTimer = interna.NewEventTimer(func() {
 		select {
 		// Deadlock in write to chan s.sessionEvent after s.Stopped()==true and end of loop session.go:766 because no reader of chan s.sessionEvent.
-		case s.sessionEvent <- internal.PeerTimeout:
+		case s.sessionEvent <- interna.PeerTimeout:
 		case <-stopChan:
 		}
 

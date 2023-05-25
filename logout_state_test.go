@@ -44,14 +44,14 @@ func (s *LogoutStateTestSuite) TestPreliminary() {
 
 func (s *LogoutStateTestSuite) TestTimeoutLogoutTimeout() {
 	s.MockApp.On("OnLogout").Return(nil)
-	s.Timeout(s.session, internal.LogoutTimeout)
+	s.Timeout(s.session, interna.LogoutTimeout)
 
 	s.MockApp.AssertExpectations(s.T())
 	s.State(latentState{})
 }
 
 func (s *LogoutStateTestSuite) TestTimeoutNotLogoutTimeout() {
-	tests := []internal.Event{internal.PeerTimeout, internal.NeedHeartbeat, internal.LogonTimeout}
+	tests := []interna.Event{interna.PeerTimeout, interna.NeedHeartbeat, interna.LogonTimeout}
 
 	for _, test := range tests {
 		s.Timeout(s.session, test)

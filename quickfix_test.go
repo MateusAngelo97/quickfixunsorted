@@ -219,7 +219,7 @@ func (s *SessionSuiteRig) Init() {
 		application:  &s.MockApp,
 		log:          nullLog{},
 		messageOut:   s.Receiver.sendChannel,
-		sessionEvent: make(chan internal.Event),
+		sessionEvent: make(chan interna.Event),
 	}
 	s.MaxLatency = 120 * time.Second
 }

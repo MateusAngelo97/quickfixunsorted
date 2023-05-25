@@ -192,7 +192,7 @@ func (s *SessionFactorySuite) TestStartAndEndTime() {
 	s.NotNil(session.SessionTime)
 
 	s.Equal(
-		*internal.NewUTCTimeRange(internal.NewTimeOfDay(12, 0, 0), internal.NewTimeOfDay(14, 0, 0)),
+		*interna.NewUTCTimeRange(interna.NewTimeOfDay(12, 0, 0), interna.NewTimeOfDay(14, 0, 0)),
 		*session.SessionTime,
 	)
 }
@@ -207,7 +207,7 @@ func (s *SessionFactorySuite) TestStartAndEndTimeAndTimeZone() {
 	s.NotNil(session.SessionTime)
 
 	s.Equal(
-		*internal.NewTimeRangeInLocation(internal.NewTimeOfDay(12, 0, 0), internal.NewTimeOfDay(14, 0, 0), time.Local),
+		*interna.NewTimeRangeInLocation(interna.NewTimeOfDay(12, 0, 0), interna.NewTimeOfDay(14, 0, 0), time.Local),
 		*session.SessionTime,
 	)
 }
@@ -233,8 +233,8 @@ func (s *SessionFactorySuite) TestStartAndEndTimeAndStartAndEndDay() {
 		s.NotNil(session.SessionTime)
 
 		s.Equal(
-			*internal.NewUTCWeekRange(
-				internal.NewTimeOfDay(12, 0, 0), internal.NewTimeOfDay(14, 0, 0),
+			*interna.NewUTCWeekRange(
+				interna.NewTimeOfDay(12, 0, 0), interna.NewTimeOfDay(14, 0, 0),
 				time.Sunday, time.Thursday,
 			),
 			*session.SessionTime,
@@ -254,8 +254,8 @@ func (s *SessionFactorySuite) TestStartAndEndTimeAndStartAndEndDayAndTimeZone() 
 	s.NotNil(session.SessionTime)
 
 	s.Equal(
-		*internal.NewWeekRangeInLocation(
-			internal.NewTimeOfDay(12, 0, 0), internal.NewTimeOfDay(14, 0, 0),
+		*interna.NewWeekRangeInLocation(
+			interna.NewTimeOfDay(12, 0, 0), interna.NewTimeOfDay(14, 0, 0),
 			time.Sunday, time.Thursday, time.Local,
 		),
 		*session.SessionTime,

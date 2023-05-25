@@ -98,7 +98,7 @@ func (s *InSessionTestSuite) TestLogoutResetOnLogout() {
 
 func (s *InSessionTestSuite) TestTimeoutNeedHeartbeat() {
 	s.MockApp.On("ToAdmin").Return(nil)
-	s.session.Timeout(s.session, internal.NeedHeartbeat)
+	s.session.Timeout(s.session, interna.NeedHeartbeat)
 
 	s.MockApp.AssertExpectations(s.T())
 	s.State(inSession{})
@@ -109,7 +109,7 @@ func (s *InSessionTestSuite) TestTimeoutNeedHeartbeat() {
 
 func (s *InSessionTestSuite) TestTimeoutPeerTimeout() {
 	s.MockApp.On("ToAdmin").Return(nil)
-	s.session.Timeout(s.session, internal.PeerTimeout)
+	s.session.Timeout(s.session, interna.PeerTimeout)
 
 	s.MockApp.AssertExpectations(s.T())
 	s.State(pendingTimeout{inSession{}})
@@ -221,13 +221,13 @@ func (s *InSessionTestSuite) TestFIXMsgInTargetTooHighResendRequestChunkSize() {
 
 func (s *InSessionTestSuite) TestFIXMsgInResendRequestAllAdminExpectGapFill() {
 	s.MockApp.On("ToAdmin")
-	s.session.Timeout(s.session, internal.NeedHeartbeat)
+	s.session.Timeout(s.session, interna.NeedHeartbeat)
 	s.LastToAdminMessageSent()
 
-	s.session.Timeout(s.session, internal.NeedHeartbeat)
+	s.session.Timeout(s.session, interna.NeedHeartbeat)
 	s.LastToAdminMessageSent()
 
-	s.session.Timeout(s.session, internal.NeedHeartbeat)
+	s.session.Timeout(s.session, interna.NeedHeartbeat)
 	s.LastToAdminMessageSent()
 
 	s.MockApp.AssertNumberOfCalls(s.T(), "ToAdmin", 3)
@@ -251,10 +251,10 @@ func (s *InSessionTestSuite) TestFIXMsgInResendRequestAllAdminExpectGapFill() {
 
 func (s *InSessionTestSuite) TestFIXMsgInResendRequestAllAdminThenApp() {
 	s.MockApp.On("ToAdmin")
-	s.session.Timeout(s.session, internal.NeedHeartbeat)
+	s.session.Timeout(s.session, interna.NeedHeartbeat)
 	s.LastToAdminMessageSent()
 
-	s.session.Timeout(s.session, internal.NeedHeartbeat)
+	s.session.Timeout(s.session, interna.NeedHeartbeat)
 	s.LastToAdminMessageSent()
 
 	s.MockApp.On("ToApp").Return(nil)
@@ -319,14 +319,14 @@ func (s *InSessionTestSuite) TestFIXMsgInResendRequestNoMessagePersist() {
 
 func (s *InSessionTestSuite) TestFIXMsgInResendRequestDoNotSendApp() {
 	s.MockApp.On("ToAdmin")
-	s.session.Timeout(s.session, internal.NeedHeartbeat)
+	s.session.Timeout(s.session, interna.NeedHeartbeat)
 	s.LastToAdminMessageSent()
 
 	s.MockApp.On("ToApp").Return(nil)
 	s.Require().Nil(s.session.send(s.NewOrderSingle()))
 	s.LastToAppMessageSent()
 
-	s.session.Timeout(s.session, internal.NeedHeartbeat)
+	s.session.Timeout(s.session, interna.NeedHeartbeat)
 	s.LastToAdminMessageSent()
 
 	s.MockApp.AssertNumberOfCalls(s.T(), "ToAdmin", 2)

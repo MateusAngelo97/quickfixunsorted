@@ -59,7 +59,7 @@ func (s *PendingTimeoutTestSuite) TestSessionTimeout() {
 		s.session.State = state
 
 		s.MockApp.On("OnLogout").Return(nil)
-		s.session.Timeout(s.session, internal.PeerTimeout)
+		s.session.Timeout(s.session, interna.PeerTimeout)
 
 		s.MockApp.AssertExpectations(s.T())
 		s.State(latentState{})
@@ -72,7 +72,7 @@ func (s *PendingTimeoutTestSuite) TestTimeoutUnchangedState() {
 		{resendState{}},
 	}
 
-	testEvents := []internal.Event{internal.NeedHeartbeat, internal.LogonTimeout, internal.LogoutTimeout}
+	testEvents := []interna.Event{interna.NeedHeartbeat, interna.LogonTimeout, interna.LogoutTimeout}
 
 	for _, state := range tests {
 		s.session.State = state

@@ -61,7 +61,7 @@ type sessionFactory struct {
 	BuildInitiators bool
 }
 
-// Creates Session, associates with internal session registry.
+// Creates Session, associates with interna session registry.
 func (f sessionFactory) createSession(
 	sessionID SessionID, storeFactory MessageStoreFactory, settings *SessionSettings,
 	logFactory LogFactory, application Application,
@@ -224,8 +224,8 @@ func (f sessionFactory) newSession(
 			return
 		}
 
-		var start, end internal.TimeOfDay
-		if start, err = internal.ParseTimeOfDay(startTimeStr); err != nil {
+		var start, end interna.TimeOfDay
+		if start, err = interna.ParseTimeOfDay(startTimeStr); err != nil {
 			err = errors.Wrapf(
 				err, "problem parsing time of day '%v' for setting '%v",
 				settings.settings[config.StartTime], config.StartTime,
@@ -233,7 +233,7 @@ func (f sessionFactory) newSession(
 			return
 		}
 
-		if end, err = internal.ParseTimeOfDay(endTimeStr); err != nil {
+		if end, err = interna.ParseTimeOfDay(endTimeStr); err != nil {
 			err = errors.Wrapf(
 				err, "problem parsing time of day '%v' for setting '%v",
 				settings.settings[config.EndTime], config.EndTime,
@@ -259,7 +259,7 @@ func (f sessionFactory) newSession(
 		}
 
 		if !settings.HasSetting(config.StartDay) && !settings.HasSetting(config.EndDay) {
-			s.SessionTime = internal.NewTimeRangeInLocation(start, end, loc)
+			s.SessionTime = interna.NewTimeRangeInLocation(start, end, loc)
 		} else {
 			var startDayStr, endDayStr string
 			if startDayStr, err = settings.Setting(config.StartDay); err != nil {
@@ -287,7 +287,7 @@ func (f sessionFactory) newSession(
 				return
 			}
 
-			s.SessionTime = internal.NewWeekRangeInLocation(start, end, startDay, endDay, loc)
+			s.SessionTime = interna.NewWeekRangeInLocation(start, end, startDay, endDay, loc)
 		}
 	}
 
@@ -338,7 +338,7 @@ func (f sessionFactory) newSession(
 		return
 	}
 
-	s.sessionEvent = make(chan internal.Event)
+	s.sessionEvent = make(chan interna.Event)
 	s.messageEvent = make(chan bool, 1)
 	s.admin = make(chan interface{})
 	s.application = application

@@ -30,9 +30,9 @@ func (state logoutState) FixMsgIn(session *session, msg *Message) (nextState ses
 	return state
 }
 
-func (state logoutState) Timeout(session *session, event internal.Event) (nextState sessionState) {
+func (state logoutState) Timeout(session *session, event interna.Event) (nextState sessionState) {
 	switch event {
-	case internal.LogoutTimeout:
+	case interna.LogoutTimeout:
 		session.log.OnEvent("Timed out waiting for logout response")
 		return latentState{}
 	}
