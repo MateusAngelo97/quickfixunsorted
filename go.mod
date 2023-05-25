@@ -1,4 +1,4 @@
-module quickfixunsorted
+module github.com/MateusAngelo97/quickfixunsorted
 
 go 1.20
 
