@@ -412,7 +412,7 @@ func (m *Message) build() []byte {
 
 	var b bytes.Buffer
 	m.Header.write(&b)
-	m.Body.write(&b)
+	m.Body.writeNoSort(&b)
 	m.Trailer.write(&b)
 	return b.Bytes()
 }

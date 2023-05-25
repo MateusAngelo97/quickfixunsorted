@@ -310,7 +310,7 @@ func (m *FieldMap) SetGroup(field FieldGroupWriter) *FieldMap {
 }
 
 func (m *FieldMap) sortedTags() []Tag {
-	//sort.Sort(m)
+	sort.Sort(m)
 	return m.tags
 }
 
@@ -319,6 +319,17 @@ func (m FieldMap) write(buffer *bytes.Buffer) {
 	defer m.rwLock.Unlock()
 
 	for _, tag := range m.sortedTags() {
+		if f, ok := m.tagLookup[tag]; ok {
+			writeField(f, buffer)
+		}
+	}
+}
+
+func (m FieldMap) writeNoSort(buffer *bytes.Buffer) {
+	m.rwLock.Lock()
+	defer m.rwLock.Unlock()
+
+	for _, tag := range m.tags {
 		if f, ok := m.tagLookup[tag]; ok {
 			writeField(f, buffer)
 		}
