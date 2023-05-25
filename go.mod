@@ -1,9 +1,8 @@
-module quickfixunsorted
+module github.com/MateusAngelo97/quickfixunsorted
 
 go 1.20
 
 require (
-	github.com/MateusAngelo97/quickfixunsorted v0.0.0-20230525191520-106d310c1b30
 	github.com/armon/go-proxyproto v0.0.0-20210323213023-7e956b284f0a
 	github.com/mattn/go-sqlite3 v1.14.16
 	github.com/pkg/errors v0.9.1
