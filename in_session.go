@@ -17,9 +17,8 @@ package quickfixunsorted
 
 import (
 	"bytes"
+	"github.com/MateusAngelo97/quickfixunsorted/internal"
 	"time"
-
-	"github.com/quickfixgo/quickfix/internal"
 )
 
 type inSession struct{ loggedOn }
