@@ -21,7 +21,7 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/quickfixgo/quickfix/internal"
+	"github.com/MateusAngelo97/quickfixunsorted/interna"
 )
 
 type InSessionTestSuite struct {

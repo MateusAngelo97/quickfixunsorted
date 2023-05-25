@@ -21,8 +21,8 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
+	"github.com/MateusAngelo97/quickfixunsorted/interna"
 	"github.com/quickfixgo/quickfix/config"
-	"github.com/quickfixgo/quickfix/internal"
 )
 
 type SessionFactorySuite struct {

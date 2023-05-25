@@ -20,7 +20,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/quickfixgo/quickfix/internal"
+	"github.com/MateusAngelo97/quickfixunsorted/interna"
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"

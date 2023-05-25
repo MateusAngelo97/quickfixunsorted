@@ -15,7 +15,7 @@
 
 package quickfixunsorted
 
-import "github.com/quickfixgo/quickfix/internal"
+import "github.com/MateusAngelo97/quickfixunsorted/interna"
 
 type logoutState struct{ connectedNotLoggedOn }
 

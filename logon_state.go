@@ -18,7 +18,7 @@ package quickfixunsorted
 import (
 	"bytes"
 
-	"github.com/quickfixgo/quickfix/internal"
+	"github.com/MateusAngelo97/quickfixunsorted/interna"
 )
 
 type logonState struct{ connectedNotLoggedOn }
