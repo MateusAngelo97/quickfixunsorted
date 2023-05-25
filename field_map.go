@@ -318,7 +318,8 @@ func (m FieldMap) write(buffer *bytes.Buffer) {
 	m.rwLock.Lock()
 	defer m.rwLock.Unlock()
 
-	for _, tag := range m.sortedTags() {
+	//for _, tag := range m.sortedTags() {
+	for _, tag := range m.Tags() {
 		if f, ok := m.tagLookup[tag]; ok {
 			writeField(f, buffer)
 		}
