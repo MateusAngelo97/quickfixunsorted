@@ -13,7 +13,7 @@
 // Contact ask@quickfixengine.org if any conditions of this licensing
 // are not clear to you.
 
-// Package quickfix is a full featured messaging engine for the FIX protocol.  It is a 100% Go open source implementation of the popular C++ QuickFIX engine (http://quickfixengine.org).
+// package quickfixunsorted is a full featured messaging engine for the FIX protocol.  It is a 100% Go open source implementation of the popular C++ QuickFIX engine (http://quickfixengine.org).
 //
 // User manual and additional information available at https://quickfixgo.org
-package quickfix
+package quickfixunsorted

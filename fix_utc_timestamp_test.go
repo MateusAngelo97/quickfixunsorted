@@ -13,7 +13,7 @@
 // Contact ask@quickfixengine.org if any conditions of this licensing
 // are not clear to you.
 
-package quickfix_test
+package quickfixunsorted_test
 
 import (
 	"bytes"

@@ -13,7 +13,7 @@
 // Contact ask@quickfixengine.org if any conditions of this licensing
 // are not clear to you.
 
-package quickfix
+package quickfixunsorted
 
 // Log is a generic interface for logging FIX messages and events.
 type Log interface {

@@ -13,7 +13,7 @@
 // Contact ask@quickfixengine.org if any conditions of this licensing
 // are not clear to you.
 
-package quickfix
+package quickfixunsorted
 
 // FIXBytes is a generic FIX field value, implements FieldValue.  Enables zero copy read from a FieldMap.
 type FIXBytes []byte

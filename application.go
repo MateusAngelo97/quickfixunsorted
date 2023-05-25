@@ -13,7 +13,7 @@
 // Contact ask@quickfixengine.org if any conditions of this licensing
 // are not clear to you.
 
-package quickfix
+package quickfixunsorted
 
 // Application interface should be implemented by FIX Applications.
 // This is the primary interface for processing messages from a FIX Session.
